@@ -22,12 +22,26 @@ const App = (props) => {
   }
 
   return (
-    <div>
+    <Router>
         <div className="App">
           <HogwartNavbar />
         </div>
         {/* add routes and route here */}
-    </div>
+       <Routes>
+          <Route path="/" element={<Home categories={categories} />} />
+          {/* ex1*/}
+          <Route
+            path="/wiki/:category"
+            element={<Entities getCategoryData={getCategoryData} />}
+          />
+
+          {/* ex2 */}
+          <Route
+            path="/wiki/:category/:entityName"
+            element={<EntityDescription getCategoryData={getCategoryData} />}
+          />
+        </Routes>
+    </Router>
 
   );
 }
